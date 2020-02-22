@@ -36,4 +36,5 @@ install:
   - composer install --no-interaction
 
 script:
-  - vendor/bin/phpunit --coverage-text
+  - ./vendor/bin/phpunit -v
+  - ./vendor/bin/phpunit -v --coverage-text --coverage-clover=./build/logs/clover.xml

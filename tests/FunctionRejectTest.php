@@ -53,6 +53,10 @@ class FunctionRejectTest extends TestCase
             $this->markTestSkipped('Not supported on legacy Promise v1 API');
         }
 
+        if ($this->getTestResultObject()->getCollectCodeCoverageInformation() === true) {
+            $this->markTestSkipped('This test has memory leaks when code coverage is collected');
+        }
+
         gc_collect_cycles();
         gc_collect_cycles(); // clear twice to avoid leftovers in PHP 7.4 with ext-xdebug and code coverage turned on
 
@@ -67,6 +71,10 @@ class FunctionRejectTest extends TestCase
     {
         if (class_exists('React\Promise\When')) {
             $this->markTestSkipped('Not supported on legacy Promise v1 API');
+        }
+
+        if ($this->getTestResultObject()->getCollectCodeCoverageInformation() === true) {
+            $this->markTestSkipped('This test has memory leaks when code coverage is collected');
         }
 
         gc_collect_cycles();
